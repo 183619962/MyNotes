@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.lpf.mynotes.utils.NetUtils;
 
-public abstract class BaseActivity extends NfcActivity {
+public abstract class BaseActivity extends NfcBaseActivity {
 
 	/**
 	 * 子类继承并告知相关的布局文件
