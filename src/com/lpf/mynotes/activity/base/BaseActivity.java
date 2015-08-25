@@ -1,5 +1,6 @@
 package com.lpf.mynotes.activity.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -34,22 +35,27 @@ public abstract class BaseActivity extends NfcActivity {
 	/**
 	 * 是否是连接的wifi
 	 */
-	private boolean isWifi = false;
+	public boolean isWifi = false;
 
 	/**
 	 * 是否连接网络
 	 */
-	private boolean isConnectNet = false;
+	public boolean isConnectNet = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		// 设置子类传递传递的布局id
 		setContentView(getLayout());
+
+		// 调用子类的实现获取布局
 		findView();
 
+		// 做基础的校验 得到基础的属性 如wifi 网络等
 		baseCheck();
 
+		// 设置基础数据 或获取网络数据
 		setData();
 	}
 

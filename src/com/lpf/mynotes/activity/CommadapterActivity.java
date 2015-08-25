@@ -3,7 +3,6 @@ package com.lpf.mynotes.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -13,38 +12,42 @@ import com.lpf.mynotes.R;
 import com.lpf.mynotes.activity.base.BaseActivity;
 import com.lpf.mynotes.adapter.ItemAdapter;
 import com.lpf.mynotes.model.ItemInfo;
+import com.lpf.mynotes.utils.ToastUtils;
 
-public class MainActivity extends BaseActivity {
-	private ListView notes;
-	private List<ItemInfo> noteInfos;
+public class CommadapterActivity extends BaseActivity {
+
+	ListView lv;
+
+	List<ItemInfo> itemInfos;
 
 	@Override
 	public int getLayout() {
 		// TODO Auto-generated method stub
-		return R.layout.activity_main;
+		return R.layout.activity_commadapter;
 	}
 
 	@Override
 	public void findView() {
 		// TODO Auto-generated method stub
-		notes = (ListView) findViewById(R.id.notes_listview);
+		lv = (ListView) findViewById(R.id.commadapter_listview);
 	}
 
 	@Override
 	public void setData() {
 		// TODO Auto-generated method stub
-		// 初始化主界面的数据
-		noteInfos = new ArrayList<ItemInfo>();
-		ItemInfo info = new ItemInfo(0, "CommAdapter",
-				"通过公共的adapter绑定listview数据", 0,
-				"com.lpf.mynotes.activity.CommadapterActivity");
-		noteInfos.add(info);
+		itemInfos = new ArrayList<ItemInfo>();
+		for (int i = 0; i < 100; i++) {
+			ItemInfo info = new ItemInfo(R.drawable.skyblue_logo_email, "item"
+					+ i, null, R.drawable.icon_my_arror, "");
+			itemInfos.add(info);
+		}
 
-		notes.setAdapter(new ItemAdapter(this, noteInfos,
+		// 绑定适配器
+		lv.setAdapter(new ItemAdapter(this, itemInfos,
 				R.layout.listview_base_item));
 
-		// 给listview绑定按钮跳转事件
-		notes.setOnItemClickListener(new OnItemClickListener() {
+		// 设置点击事件
+		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view,
@@ -52,11 +55,8 @@ public class MainActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				ItemInfo itemInfo = (ItemInfo) adapter
 						.getItemAtPosition(position);
-				if (null != itemInfo.clsName && itemInfo.clsName.length() > 0) {
-					Intent intent = new Intent();
-					intent.setClassName(MainActivity.this, itemInfo.clsName);
-					startActivity(intent);
-				}
+				ToastUtils.showShort(CommadapterActivity.this,
+						itemInfo.toString());
 			}
 		});
 
@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public boolean unConnectNetShowToast() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
