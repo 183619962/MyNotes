@@ -1,19 +1,41 @@
 package com.lpf.mynotes.activity;
 
-import com.lpf.mynotes.R;
-import com.lpf.mynotes.R.layout;
-
-import android.app.Activity;
-import android.os.Bundle;
 import android.widget.ListView;
 
-public class MainActivity extends Activity {
+import com.lpf.mynotes.R;
+import com.lpf.mynotes.activity.base.BaseActivity;
+
+public class MainActivity extends BaseActivity {
 	private ListView notes;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+	public int getLayout() {
+		// TODO Auto-generated method stub
+		return R.layout.activity_main;
+	}
+
+	@Override
+	public void findView() {
+		// TODO Auto-generated method stub
+		notes = (ListView) findViewById(R.id.notes_listview);
+	}
+
+	@Override
+	public void setData() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean unConnectNetShowToast() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean showOpenNFCLog() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
