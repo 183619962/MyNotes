@@ -7,5 +7,6 @@
     <string name="title">该项目用于整理各个知识点，以便于后期学习及查阅</string>
     <string name="activity_nfcactivity_remark">注:该界面通过手机NFC功能去去读卡片余额消息</string>
     <string name="activity_nfcactivity_msg">请将卡片贴到手机后盖</string>
+    
 
 </resources>

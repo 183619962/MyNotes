@@ -43,6 +43,10 @@ public class MainActivity extends BaseActivity {
 				NFCActivity.class);
 		noteInfos.add(info1);
 
+		ItemInfo info2 = new ItemInfo(0, "Volley使用", "通过volley实现网络交互", 0,
+				VolleyActivity.class);
+		noteInfos.add(info2);
+
 		notes.setAdapter(new ItemAdapter(this, noteInfos,
 				R.layout.listview_base_item));
 
