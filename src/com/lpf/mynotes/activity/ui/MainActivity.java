@@ -47,6 +47,10 @@ public class MainActivity extends BaseActivity {
 				VolleyActivity.class);
 		noteInfos.add(info2);
 
+		ItemInfo info3 = new ItemInfo(0, "viewpager广告轮播", "通过viewpager实现广告轮播",
+				0, MyCycleActivity.class);
+		noteInfos.add(info3);
+
 		notes.setAdapter(new ItemAdapter(this, noteInfos,
 				R.layout.listview_base_item));
 

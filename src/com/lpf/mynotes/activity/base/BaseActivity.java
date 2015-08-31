@@ -1,6 +1,5 @@
 package com.lpf.mynotes.activity.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -69,7 +68,9 @@ public abstract class BaseActivity extends NfcBaseActivity {
 			Toast.makeText(this, "未连接网络", Toast.LENGTH_LONG).show();
 		}
 
-		isWifi = NetUtils.isWifi(this);
+		// 在连接网络的情况下判断是都是wifi
+		if (isConnectNet)
+			isWifi = NetUtils.isWifi(this);
 	}
 
 }

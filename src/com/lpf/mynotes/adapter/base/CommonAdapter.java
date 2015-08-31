@@ -3,6 +3,7 @@ package com.lpf.mynotes.adapter.base;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -48,6 +49,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
+		Log.i("LOG", "" + position);
 		ViewHolder holder = new ViewHolder(context, layoutID, position, parent);
 		convert(holder, getItem(position));
 		return holder.getConvertView();
