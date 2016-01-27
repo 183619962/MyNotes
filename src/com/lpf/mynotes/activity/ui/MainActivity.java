@@ -36,7 +36,8 @@ public class MainActivity extends BaseActivity {
 		// 初始化主界面的数据
 		noteInfos = new ArrayList<ItemInfo>();
 		ItemInfo info = new ItemInfo(0, "CommAdapter",
-				"通过公共的adapter绑定listview数据", 0, CommadapterActivity.class);
+				"通过公共的adapter绑定listview数据,使用pullToRefresh实现上拉、下拉刷新", 0,
+				CommadapterActivity.class);
 		noteInfos.add(info);
 
 		ItemInfo info1 = new ItemInfo(0, "NFC读卡", "通过手机的NFC功能获取卡片的余额消息", 0,
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity {
 				VolleyActivity.class);
 		noteInfos.add(info2);
 
-		ItemInfo info3 = new ItemInfo(0, "viewpager广告轮播", "通过viewpager实现广告轮播",
+		ItemInfo info3 = new ItemInfo(0, "ViewPager广告轮播", "通过viewpager实现广告轮播",
 				0, MyCycleActivity.class);
 		noteInfos.add(info3);
 

@@ -12,7 +12,9 @@ import com.android.volley.VolleyError;
 import com.lpf.mynotes.R;
 import com.lpf.mynotes.activity.base.BaseActivity;
 import com.lpf.mynotes.base.BaseRequest;
+import com.lpf.mynotes.base.RequestManager;
 import com.lpf.mynotes.base.VolleyInterface;
+import com.lpf.mynotes.exception.NetworkException;
 import com.lpf.mynotes.utils.ToastUtils;
 
 public class VolleyActivity extends BaseActivity implements OnClickListener {
@@ -58,21 +60,31 @@ public class VolleyActivity extends BaseActivity implements OnClickListener {
 		switch (view.getId()) {
 		case R.id.get:
 			String url = "http://chong.qq.com/tws/extinfo/GetMobileProductInfo?mobile=15014050224&amount=10000&callname=getPhoneNumInfoExtCallback&_=1439982011907";
-			BaseRequest.requestGet(this, url, "get", new VolleyInterface(this) {
-
-				@Override
-				public void mySuccess(String response) {
-					// TODO Auto-generated method stub
-					ToastUtils.showShort(VolleyActivity.this, response);
-					txt.setText(response);
-				}
-
-				@Override
-				public void myError(VolleyError error) {
-					// TODO Auto-generated method stub
-
-				}
-			});
+//			BaseRequest.requestGet(this, url, "get", new VolleyInterface(this) {
+//
+//				@Override
+//				public void mySuccess(String response) {
+//					// TODO Auto-generated method stub
+//					ToastUtils.showShort(VolleyActivity.this, response);
+//					txt.setText(response);
+//				}
+//
+//				@Override
+//				public void myError(VolleyError error) {
+//					// TODO Auto-generated method stub
+//
+//				}
+//			});
+			
+			RequestManager manager = new RequestManager(this, url, "get");
+			try {
+				String s = manager.getValueByGet();
+				ToastUtils.showShort(VolleyActivity.this, "value-->"+s);
+			} catch (NetworkException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				ToastUtils.showShort(VolleyActivity.this, "error-->"+e.getMessage());
+			}
 			break;
 		case R.id.post:
 			String u = "http://chong.qq.com/tws/extinfo/GetMobileProductInfo?";
